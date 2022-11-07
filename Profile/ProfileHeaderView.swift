@@ -33,7 +33,7 @@ class ProfileHeaderView: UIView {
         let nameLabel = UILabel()
         addSubview(nameLabel)
         nameLabel.text = "Randall"
-        nameLabel.textColor = UIColor.gray
+        nameLabel.textColor = UIColor.black
         nameLabel.font = .systemFont(ofSize: 18)
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         
@@ -51,10 +51,15 @@ class ProfileHeaderView: UIView {
         button.layer.cornerRadius = 4
         button.setTitle("Show status", for: .normal)
         button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
-
-        addSubview(button)
+        button.layer.shadowOpacity = 0.7
+        button.layer.shadowOffset = CGSize(width: 4, height: 4)
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowRadius = CGFloat(4)
         
        
+        
+        addSubview(button)
+        
         
         NSLayoutConstraint.activate([
             image.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
@@ -68,11 +73,12 @@ class ProfileHeaderView: UIView {
             statusLabel.leadingAnchor.constraint(equalTo: image.trailingAnchor, constant: 16),
             statusLabel.bottomAnchor.constraint(equalTo: button.topAnchor, constant: -34),
         
-            button.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            button.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
             button.topAnchor.constraint(equalTo: image.bottomAnchor, constant: 16),
-            button.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            button.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
             button.heightAnchor.constraint(equalToConstant: 50),
-            button.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
+
+        
         ])
     
     }
