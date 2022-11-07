@@ -13,17 +13,41 @@ class ProfileViewController: UIViewController {
     
     let profileHeaderView = ProfileHeaderView()
     
+    var button1: UIButton = {
+        let button1 = UIButton()
+        button1.translatesAutoresizingMaskIntoConstraints = false
+        button1.layer.cornerRadius = 4
+        button1.backgroundColor = .blue
+        button1.setTitleColor(.white, for: .normal)
+        button1.setTitle("New button", for: .normal)
+        button1.layer.shadowOpacity = 0.7
+        button1.layer.shadowOffset = CGSize(width: 4, height: 4)
+        button1.layer.shadowColor = UIColor.black.cgColor
+        button1.layer.shadowRadius = CGFloat(4)
+        
+        return button1
+        
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .lightGray
         view.addSubview(profileHeaderView)
+        view.addSubview(button1)
         
         profileHeaderView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            profileHeaderView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            profileHeaderView.heightAnchor.constraint(equalToConstant: 220),
+            profileHeaderView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             profileHeaderView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            profileHeaderView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
+            profileHeaderView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            
+            button1.heightAnchor.constraint(equalToConstant: 50),
+            button1.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            button1.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            button1.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            
+           
         ])
     }
     
@@ -34,59 +58,6 @@ class ProfileViewController: UIViewController {
         
  
     }
-    
-//    func setupSubviews() {
-//        let image = UIImageView()
-//        image.image = UIImage(named: "avatar")
-//        image.translatesAutoresizingMaskIntoConstraints = false
-//        self.view.addSubview(image)
-//        image.layer.cornerRadius = 50
-//        image.clipsToBounds = true
-//        image.layer.borderWidth = 3
-//        image.layer.borderColor = UIColor.white.cgColor
-//
-//
-//        let nameLabel = UILabel()
-//        self.view.addSubview(nameLabel)
-//        nameLabel.text = "Randall"
-//        nameLabel.textColor = UIColor.gray
-//        nameLabel.font = .systemFont(ofSize: 18)
-//        nameLabel.translatesAutoresizingMaskIntoConstraints = false
-//
-//
-//        let statusLabel = UILabel()
-//        self.view.addSubview(statusLabel)
-//        statusLabel.text = "Waiting for something..."
-//        statusLabel.textColor = UIColor.gray
-//        statusLabel.font = .systemFont(ofSize: 14)
-//        statusLabel.translatesAutoresizingMaskIntoConstraints = false
-//
-//        let button = UIButton()
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//        button.backgroundColor = .blue
-//        button.layer.cornerRadius = 4
-//        button.setTitle("Show status", for: .normal)
-//
-//        view.addSubview(button)
-//
-//
-//        NSLayoutConstraint.activate([
-//            image.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-//            image.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
-//            image.widthAnchor.constraint(equalToConstant: 100),
-//            image.heightAnchor.constraint(equalToConstant: 100),
-//
-//            nameLabel.leadingAnchor.constraint(equalTo: image.trailingAnchor, constant: 16),
-//            nameLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 27),
-//
-//            statusLabel.leadingAnchor.constraint(equalTo: image.trailingAnchor, constant: 16),
-//            statusLabel.bottomAnchor.constraint(equalTo: button.topAnchor, constant: -34),
-//
-//            button.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-//            button.topAnchor.constraint(equalTo: image.bottomAnchor, constant: 16),
-//            button.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-//            button.heightAnchor.constraint(equalToConstant: 50)
-//        ])
-        
+
     
 
