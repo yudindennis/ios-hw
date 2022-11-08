@@ -11,7 +11,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func createFeedViewController() -> UINavigationController {
         let navigationVC = UINavigationController(rootViewController: FeedViewController())
-        navigationVC.tabBarItem = UITabBarItem(title: "Лента", image: UIImage(systemName: "square.and.arrow.up"), tag: 1)
+        navigationVC.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(systemName: "list.bullet"), tag: 1)
         return navigationVC
     }
     
@@ -22,11 +22,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     
+    func loginNavigationController() -> UINavigationController {
+        let loginNavigationController = UINavigationController(rootViewController: LogInViewController())
+        loginNavigationController.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), selectedImage: nil)
+        loginNavigationController.navigationBar.isHidden = true
+        return loginNavigationController
+    }
+        
     
     func createTabBar() -> UITabBarController {
         let tabBar = UITabBarController()
         tabBar.viewControllers = [createFeedViewController(),
-                                  createProfileViewController()]
+                                  loginNavigationController()]
         return tabBar
         
         
