@@ -17,6 +17,8 @@
 		B35516492906E5DF007E70B1 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35516482906E5DF007E70B1 /* ProfileViewController.swift */; };
 		B355164B2906E7A8007E70B1 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B355164A2906E7A8007E70B1 /* PostViewController.swift */; };
 		B3AE8E2F2911431300113FB7 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AE8E2E2911431300113FB7 /* ProfileHeaderView.swift */; };
+		B3E0F8FA291A756400659C90 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E0F8F9291A756400659C90 /* LogInViewController.swift */; };
+		B3E0F8FC291A75A800659C90 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E0F8FB291A75A800659C90 /* LogInView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		B35516482906E5DF007E70B1 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		B355164A2906E7A8007E70B1 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		B3AE8E2E2911431300113FB7 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		B3E0F8F9291A756400659C90 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		B3E0F8FB291A75A800659C90 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +87,8 @@
 			isa = PBXGroup;
 			children = (
 				B3AE8E2E2911431300113FB7 /* ProfileHeaderView.swift */,
+				B3E0F8F9291A756400659C90 /* LogInViewController.swift */,
+				B3E0F8FB291A75A800659C90 /* LogInView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -157,8 +163,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3E0F8FC291A75A800659C90 /* LogInView.swift in Sources */,
 				B355164B2906E7A8007E70B1 /* PostViewController.swift in Sources */,
 				B35516332906D142007E70B1 /* ViewController.swift in Sources */,
+				B3E0F8FA291A756400659C90 /* LogInViewController.swift in Sources */,
 				B355162F2906D142007E70B1 /* AppDelegate.swift in Sources */,
 				B320C19B290952C80059B1F3 /* InfoViewController.swift in Sources */,
 				B35516492906E5DF007E70B1 /* ProfileViewController.swift in Sources */,
