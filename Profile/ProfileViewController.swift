@@ -6,49 +6,45 @@ class ProfileViewController: UIViewController {
     var profile: Profile = {
         return Profile(name: "Randall", imageSrc: "avatar", state: "some state")
     }()
+    
+    
     let posts: [Post] = [
-        {
-            return Post(
-                author: "Имя",
-                description: "Произошла встреча с пчелой ",
-                image: "post1.jpg",
-                likes: 10,
-                views: 25)
-        }(),
-        {
-            return Post(
-                author: "Name",
-                description: "Описание",
-                image: "post2.jpg",
-                likes: 201,
-                views: 235
-            )
-        }(),
-        {
-            return Post(
-                author: "Имя",
-                description: "Описание",
-                image: "post3.jpg",
-                likes: 30,
-                views: 75)
-        }(),
-        {
-            return Post(
-                author: "Имя",
-                description: "Описание",
-                image: "post1.jpg",
-                likes: 25,
-                views: 59)
-        }(),
-        {
-            return Post(
-                author: "Имя",
-                description: "Описание",
-                image: "post2.jpg",
-                likes: 35,
-                views: 338)
-        }(),
-    ]
+        Post(
+        author: "Имя",
+        description: "Произошла встреча с пчелой ",
+        image: "post1.jpg",
+        likes: 10,
+        views: 25),
+                         
+        Post(
+        author: "Новости Перми",
+        description: "В Перми потеплеет до +7° и выпадет до 70% месячной нормы осадков. Синоптики подготовили прогноз на ближайшие дни. По их данным, до конца недели ожидается значительное потепление с высоким уровнем осадков. Затем ситуация резко изменится: очень сильно похолодает.",
+        image: "post2.jpg",
+        likes: 201,
+        views: 235),
+        
+        Post(
+        author: "Pittsburgh Penguins NHL",
+        description: "Из хорошего. Сидни Кросби сделал 900-ю результативную передачу в карьере. На это ему потребовалось 1120 матчей. Только пять игроков в истории лиги Грецки, Лемье, Коффи, Оутс, Фрэнсис добирались до этого рубежа быстрее",
+        image: "post3.jpg",
+        likes: 30,
+        views: 75),
+        
+        Post(
+        author: "Pittsburgh Penguins NHL",
+        description: "Настроение прямо сейчас.",
+        image: "post4.jpg",
+        likes: 25,
+        views: 59),
+        
+        Post(
+        author: "Имя",
+        description: "Описание",
+        image: "post2.jpg",
+        likes: 35,
+        views: 338)
+        ]
+    
     
     let postsTableView: UITableView = {
         let postsTableView = UITableView.init(frame: .zero, style: .plain)
@@ -68,7 +64,7 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Profile"
-        view.backgroundColor = .systemGray
+        view.backgroundColor = .white
        
         view.addSubview(postsTableView)
         

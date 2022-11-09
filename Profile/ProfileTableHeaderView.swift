@@ -27,9 +27,9 @@ class ProfileTableHederView: UIView {
         profileHeaderView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             profileHeaderView.heightAnchor.constraint(equalToConstant: 220),
-            profileHeaderView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            profileHeaderView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            profileHeaderView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
+            profileHeaderView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            profileHeaderView.topAnchor.constraint(equalTo: topAnchor),
+            profileHeaderView.trailingAnchor.constraint(equalTo: trailingAnchor),
         ])
     }
     
