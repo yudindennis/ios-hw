@@ -7,17 +7,22 @@
 
 import UIKit
 
+struct Post {
+    var title: String
+    
+    init (title: String) {
+        self.title = title
+    }
+}
 
 
 class PostViewController: UIViewController {
 
+    var post: Post?
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .brown
-        struct Post {
-            let title: String
-            
-        }
+   
         let vcTitle = Post(title: "Заголовок поста")
         
         title = vcTitle.title
@@ -36,6 +41,7 @@ class PostViewController: UIViewController {
         controller.view.backgroundColor = .red
         present(controller, animated: true)
     }
+    
 }
         
         

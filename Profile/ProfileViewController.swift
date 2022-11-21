@@ -1,130 +1,134 @@
 import UIKit
 
-class ProfileViewController: UIViewController {
-
+class ProfileViewController: UIViewController{
+    
+    
+    private let postModel = PostModel.makePostModel()
+    
     fileprivate let forCellReuseIdentifier = "test"
-    var profile: Profile = {
-        return Profile(name: "Randall", imageSrc: "avatar", state: "some state")
+
+    private lazy var tableView: UITableView = {
+        var tableView = UITableView(frame: .zero, style: .grouped)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.identifier)
+        tableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: PhotosTableViewCell.identifier)
+        return tableView
     }()
     
-    
-    let posts: [Post] = [
-        Post(
-        author: "Имя",
-        description: "Произошла встреча с пчелой ",
-        image: "post1.jpg",
-        likes: 10,
-        views: 25),
-                         
-        Post(
-        author: "Новости Перми",
-        description: "В Перми потеплеет до +7° и выпадет до 70% месячной нормы осадков. Синоптики подготовили прогноз на ближайшие дни. По их данным, до конца недели ожидается значительное потепление с высоким уровнем осадков. Затем ситуация резко изменится: очень сильно похолодает.",
-        image: "post2.jpg",
-        likes: 201,
-        views: 235),
+    private func layout() {
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         
-        Post(
-        author: "Pittsburgh Penguins NHL",
-        description: "Из хорошего. Сидни Кросби сделал 900-ю результативную передачу в карьере. На это ему потребовалось 1120 матчей. Только пять игроков в истории лиги Грецки, Лемье, Коффи, Оутс, Фрэнсис добирались до этого рубежа быстрее",
-        image: "post3.jpg",
-        likes: 30,
-        views: 75),
-        
-        Post(
-        author: "Pittsburgh Penguins NHL",
-        description: "Настроение прямо сейчас.",
-        image: "post4.jpg",
-        likes: 25,
-        views: 59),
-        
-        Post(
-        author: "Имя",
-        description: "Описание",
-        image: "post2.jpg",
-        likes: 35,
-        views: 338)
-        ]
-    
-    
-    let postsTableView: UITableView = {
-        let postsTableView = UITableView.init(frame: .zero, style: .plain)
-        postsTableView.translatesAutoresizingMaskIntoConstraints = false
-        return postsTableView
-    }()
-    
-    private func activateConstraints() {
         NSLayoutConstraint.activate([
-            postsTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            postsTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            postsTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            postsTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Profile"
         view.backgroundColor = .white
-       
-        view.addSubview(postsTableView)
-        
-        postsTableView.dataSource = self
-        postsTableView.delegate = self
-        postsTableView.rowHeight = UITableView.automaticDimension
-        
-        postsTableView.register(PostTableViewCell.self, forCellReuseIdentifier: forCellReuseIdentifier)
-        
-        activateConstraints()
-        
-        view.setNeedsLayout()
-        view.layoutIfNeeded()
+        tableView.backgroundColor = .lightGray
+        view.addSubview(tableView)
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-            let headerView = ProfileTableHederView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 250))
-            
-            return headerView
-        }
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-            return 250
-        }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        layout()
+        navigationController?.navigationBar.isHidden = true
+    }
+
 }
 
 extension ProfileViewController: UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        posts.count
+    func numberOfSections(in tableView: UITableView) -> Int {
+        2
     }
-
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        section == 0 ? 1 : postModel.count
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: forCellReuseIdentifier, for: indexPath) as! PostTableViewCell
+        if indexPath.section == 0 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: PhotosTableViewCell.identifier) as? PhotosTableViewCell else {return UITableViewCell()}
+            cell.delegate = self
+            cell.selectionStyle = .none
+            return cell
+        }
         
-        let post = self.posts[indexPath.row] as Post
-        cell.titleView.text = post.author
-        let image = UIImage(named: post.image)
-        cell.postImageView.image = image
-        cell.likesCounterView.text = "Likes: \(post.likes)"
-        cell.viewsCounterView.text = "Views: \(post.views)"
-        cell.descriptionView.text = post.description
-        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier) as? PostTableViewCell else {return UITableViewCell()}
+        cell.setupCell(postModel[indexPath.row])
+        cell.selectionStyle = .none
         return cell
     }
 }
-
-extension ProfileViewController: UITableViewDelegate {
-    func selectedCell(row: Int) {
-        let viewControllerNext = UIViewController()
-        viewControllerNext.view.backgroundColor = .systemRed
-        viewControllerNext.title = "\(posts[row].author)".uppercased()
-        
-        navigationController?.pushViewController(viewControllerNext, animated: true)
-    }
+// MARK: - PhotosTableViewCellDelegate
+extension ProfileViewController: PhotosTableViewCellDelegate {
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.selectedCell(row: indexPath.row)
+    func openViewAllCollection() {
+        let allPhotVC = PhotosViewController()
+        allPhotVC.collectionPhotos = CollectionModel.makeArrayPhotos()
+        navigationController?.pushViewController(allPhotVC, animated: true)
     }
+}
+extension ProfileViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 0 {
+            let profileHeaderView = ProfileHeaderView()
+            tableView.backgroundColor = .white
+            return profileHeaderView
+        }
+        
+        return nil
+        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        220
+        UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if indexPath.section == 0 {
+            let allPhotosView = PhotosViewController()
+            allPhotosView.collectionPhotos = CollectionModel.makeArrayPhotos()
+            navigationController?.pushViewController(allPhotosView, animated: true)
+        }
+        
+        else{
+            let cell = tableView.cellForRow(at: indexPath) as! PostTableViewCell
+            cell.modelPostCounter.views += 1
+            cell.viewsLabel.text = "Views: \(cell.modelPostCounter.views)"
+            
+            let detailPost = DetailPostViewController()
+            detailPost.setupCell(postModel[indexPath.row])
+            navigationController?.pushViewController(detailPost, animated: true)
+        }
+        
+    }
+    
+}
+    
+  
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        UITableView.automaticDimension
+    }
+
+
+extension UIView {
+    static var identifier: String {
+        return String(describing: self)
     }
 }
