@@ -1,9 +1,3 @@
-//
-//  DetailPostViewController.swift
-//  Navigation
-//
-//  Created by Денис Юдин on 21.11.2022.
-//
 
 import UIKit
 

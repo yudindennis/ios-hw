@@ -1,9 +1,3 @@
-//
-//  CastomTableViewCell.swift
-//  Navigation
-//
-//  Created by Юлия on 22.05.2022.
-//
 
 import UIKit
 

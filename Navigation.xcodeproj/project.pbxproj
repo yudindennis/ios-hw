@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B318BA1B2922766200FF461F /* ValidationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B318BA1A2922766200FF461F /* ValidationData.swift */; };
-		B318BA1D292284A300FF461F /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B318BA1C292284A300FF461F /* extension.swift */; };
+		B318BA1D292284A300FF461F /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B318BA1C292284A300FF461F /* Extension.swift */; };
 		B318BA2B292B8F3B00FF461F /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B318BA2A292B8F3B00FF461F /* PhotosTableViewCell.swift */; };
 		B318BA2D292B8F8900FF461F /* CollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B318BA2C292B8F8900FF461F /* CollectionModel.swift */; };
 		B318BA2F292B8FC000FF461F /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B318BA2E292B8FC000FF461F /* PhotosCollectionViewCell.swift */; };
@@ -27,14 +27,13 @@
 		B3E0F8FA291A756400659C90 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E0F8F9291A756400659C90 /* LogInViewController.swift */; };
 		B3E0F8FC291A75A800659C90 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E0F8FB291A75A800659C90 /* LogInView.swift */; };
 		B3E0F8FE291BA83D00659C90 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E0F8FD291BA83D00659C90 /* Post.swift */; };
-		B3E0F904291BAD2900659C90 /* ProfileTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E0F903291BAD2900659C90 /* ProfileTableHeaderView.swift */; };
 		B3E0F906291BAEEE00659C90 /* PostTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E0F905291BAEED00659C90 /* PostTableView.swift */; };
 		B3E0F908291BB8EB00659C90 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E0F907291BB8EB00659C90 /* Profile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B318BA1A2922766200FF461F /* ValidationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationData.swift; sourceTree = "<group>"; };
-		B318BA1C292284A300FF461F /* extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
+		B318BA1C292284A300FF461F /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		B318BA2A292B8F3B00FF461F /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
 		B318BA2C292B8F8900FF461F /* CollectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionModel.swift; sourceTree = "<group>"; };
 		B318BA2E292B8FC000FF461F /* PhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -55,7 +54,6 @@
 		B3E0F8F9291A756400659C90 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		B3E0F8FB291A75A800659C90 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		B3E0F8FD291BA83D00659C90 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
-		B3E0F903291BAD2900659C90 /* ProfileTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableHeaderView.swift; sourceTree = "<group>"; };
 		B3E0F905291BAEED00659C90 /* PostTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableView.swift; sourceTree = "<group>"; };
 		B3E0F907291BB8EB00659C90 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,8 +94,6 @@
 		B35516222906D142007E70B1 = {
 			isa = PBXGroup;
 			children = (
-				B318BA2629252E2200FF461F /* Post */,
-				B3AE8E2B2911419900113FB7 /* Profile */,
 				B355162D2906D142007E70B1 /* Navigation */,
 				B355162C2906D142007E70B1 /* Products */,
 			);
@@ -114,6 +110,8 @@
 		B355162D2906D142007E70B1 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				B318BA2629252E2200FF461F /* Post */,
+				B3AE8E2B2911419900113FB7 /* Profile */,
 				B355162E2906D142007E70B1 /* AppDelegate.swift */,
 				B35516302906D142007E70B1 /* SceneDelegate.swift */,
 				B35516322906D142007E70B1 /* ViewController.swift */,
@@ -131,12 +129,11 @@
 			children = (
 				B35516482906E5DF007E70B1 /* ProfileViewController.swift */,
 				B3AE8E2E2911431300113FB7 /* ProfileHeaderView.swift */,
-				B3E0F903291BAD2900659C90 /* ProfileTableHeaderView.swift */,
 				B3E0F907291BB8EB00659C90 /* Profile.swift */,
 				B3E0F8F9291A756400659C90 /* LogInViewController.swift */,
 				B3E0F8FB291A75A800659C90 /* LogInView.swift */,
 				B318BA1A2922766200FF461F /* ValidationData.swift */,
-				B318BA1C292284A300FF461F /* extension.swift */,
+				B318BA1C292284A300FF461F /* Extension.swift */,
 				B318BA29292B8F0700FF461F /* Collection */,
 			);
 			path = Profile;
@@ -222,9 +219,8 @@
 				B3E0F908291BB8EB00659C90 /* Profile.swift in Sources */,
 				B318BA33292BA9E200FF461F /* DetailPostViewController.swift in Sources */,
 				B35516332906D142007E70B1 /* ViewController.swift in Sources */,
-				B3E0F904291BAD2900659C90 /* ProfileTableHeaderView.swift in Sources */,
 				B3E0F8FA291A756400659C90 /* LogInViewController.swift in Sources */,
-				B318BA1D292284A300FF461F /* extension.swift in Sources */,
+				B318BA1D292284A300FF461F /* Extension.swift in Sources */,
 				B355162F2906D142007E70B1 /* AppDelegate.swift in Sources */,
 				B320C19B290952C80059B1F3 /* InfoViewController.swift in Sources */,
 				B35516492906E5DF007E70B1 /* ProfileViewController.swift in Sources */,
