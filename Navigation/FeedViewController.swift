@@ -1,9 +1,3 @@
-//
-//  FeedViewController.swift
-//  Navigation
-//
-//  Created by Денис Юдин on 24.10.2022.
-//
 
 import UIKit
 
@@ -32,7 +26,14 @@ class FeedViewController: UIViewController {
        
         }
             
-        
+    @objc private func tapAction() {
+         let postVC = PostViewController()
+        postVC.navigationItem.title = post.title
+       
+        navigationController?.pushViewController(postVC, animated: true)
+    }
+    let post = Post(title: "Post")
+
         
 
     }

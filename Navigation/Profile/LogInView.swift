@@ -1,12 +1,15 @@
 import UIKit
 
 class LogInView: UIView {
-    let scrollView: UIScrollView = {
-            let scrollView = UIScrollView()
-            scrollView.translatesAutoresizingMaskIntoConstraints = false
-            return scrollView
-        }()
+    
 
+    
+    let scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        return scrollView
+    }()
+    
     let contentView: UIView = {
         let contentView = UIView()
         contentView.translatesAutoresizingMaskIntoConstraints = false
@@ -23,6 +26,7 @@ class LogInView: UIView {
     
     let loginInput: UITextField = {
         let loginInput = UITextField()
+        loginInput.tag = 1
         loginInput.translatesAutoresizingMaskIntoConstraints = false
         loginInput.backgroundColor = UIColor(red: CGFloat(242.0/255.0), green: CGFloat(242.0/255.0), blue: CGFloat(247.0/255.0), alpha: CGFloat(1.0))
         loginInput.textColor = .gray
@@ -32,7 +36,6 @@ class LogInView: UIView {
         let paddingView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 40))
         loginInput.leftView = paddingView
         loginInput.leftViewMode = .always
-        
         loginInput.placeholder = "Email or phone"
         
         return loginInput
@@ -64,14 +67,24 @@ class LogInView: UIView {
         button.backgroundColor = UIColor(named: "blue_pixel")
         button.setTitleColor(.white, for: .normal)
         button.setTitle("Log In", for: .normal)
-
+        
         return button
     }()
     
-    fileprivate enum CellReuseID: String {
-        case login = "loginReuseID"
-        case password = "passwordReuseID"
-    }
+    
+    
+    var invalidDataLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .lightGray
+        label.font = .systemFont(ofSize: 12)
+        label.numberOfLines = 8
+        label.contentMode = .scaleToFill
+        label.isHidden = true
+        return label
+    }()
+    
+
     
     public override init(frame: CGRect)
     {
@@ -93,7 +106,9 @@ class LogInView: UIView {
         contentView.addSubview(loginInput)
         contentView.addSubview(passwordInput)
         contentView.addSubview(logInButton)
+        contentView.addSubview(invalidDataLabel)
     }
+    
     
     private func activateConstraints() {
         let heightConstraint = contentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor)
@@ -131,6 +146,10 @@ class LogInView: UIView {
             logInButton.topAnchor.constraint(equalTo: passwordInput.bottomAnchor, constant: 16),
             logInButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16),
             logInButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            
+            invalidDataLabel.topAnchor.constraint(equalTo: logInButton.bottomAnchor, constant: 10),
+            invalidDataLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            invalidDataLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20)
         ])
         
         loginInput.layer.cornerRadius = 20
@@ -140,4 +159,25 @@ class LogInView: UIView {
         passwordInput.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         
     }
+    
+    func validEmail(email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+
+        let validEmail = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return validEmail.evaluate(with: email)
+    }
+    
+    func validPassword(password : String) -> Bool {
+        let passwordReg =  ("(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z])(?=.*[@#$%^&*]).{8,}")
+        let passwordTesting = NSPredicate(format: "SELF MATCHES %@", passwordReg)
+        return passwordTesting.evaluate(with: password) && password.count > 6
+    }
+    
+    func longPassword(password : String) -> Bool {
+        return password.count > 6
+    }
+    
+  
+    
+    
 }

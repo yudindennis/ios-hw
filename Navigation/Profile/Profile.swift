@@ -1,9 +1,3 @@
-//
-//  Profile.swift
-//  Navigation
-//
-//  Created by Денис Юдин on 09.11.2022.
-//
 
 import Foundation
 
